@@ -1,0 +1,23 @@
+[package]
+name = "brightness-ctl"
+version = "0.0.0"
+description = "command line tool to control screen brightness"
+license = "BSD-2-Clause"
+repository = "https://github.com/brightness-ctl"
+documentation = "https://docs.rs/brightness-ctl"
+keywords = ["screen", "brightness", "backlight", "commmand-line"]
+categories = ["command-line-utilities"]
+
+publish = ["crates-io"]
+edition = "2021"
+
+[features]
+default = ["dbus"]
+zbus = ["notify-rust/z"]
+dbus = ["notify-rust/dbus"]
+
+[dependencies]
+clap = { version = "4.5.0", features = ["derive"] }
+env_logger = "0.11.2"
+log = "0.4.20"
+notify-rust = { version = "4.10.0", default-features = false }

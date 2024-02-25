@@ -221,7 +221,7 @@ fn read_u64(path: &Path, file: &mut File) -> Result<u64, ()> {
 fn show_notification(percentage: f64) {
 	let mut notification = Notification::new();
 	notification.summary(&format!("Screen brightness: {percentage:.0}%"));
-	notification.icon("display-brightness");
+	notification.icon("display-brightness-symbolic");
 	notification.id(0x49adff09);
 	notification.hint(notify_rust::Hint::CustomInt("value".to_owned(), percentage.round() as i32));
 	notification.show()

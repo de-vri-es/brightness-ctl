@@ -223,6 +223,7 @@ fn show_notification(percentage: f64) {
 	notification.summary(&format!("Screen brightness: {percentage:.0}%"));
 	notification.icon("display-brightness-symbolic");
 	notification.id(0x49adff09);
+	#[cfg(all(unix, not(target_os = "macos")))]
 	notification.hint(notify_rust::Hint::CustomInt("value".to_owned(), percentage.round() as i32));
 	notification.show()
 		.map_err(|e| log::error!("Failed to show notification: {e}"))

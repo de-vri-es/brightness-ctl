@@ -1,5 +1,6 @@
 # Unreleased
 - [fix][patch] Fix repository URL in Cargo.toml.
+- [change][patch] Add clear compile-time error on non-supported platforms.
 
 # Version 0.1.1 - 2024-02-25
 - [change][minor] Use symbolic icon for notification.

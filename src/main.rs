@@ -14,7 +14,14 @@
 //! brightness-ctl --help
 //! ```
 
-use std::{path::{Path, PathBuf}, fs::File};
+#[cfg(not(target_os = "linux"))]
+compile_error!(concat!(
+	"This tool currently only works on Linux.\n\n",
+	"Support for additional platforms is highly appreciated.\n",
+	"Feel free to open a PR on https://github.com/de-vri-es/brightness-ctl.\n\n",
+));
+
+use std::path::{Path, PathBuf};
 
 use notify_rust::Notification;
 
@@ -207,7 +214,7 @@ fn open_u64(path: &Path) -> Result<u64, ()> {
 	read_u64(path, &mut file)
 }
 
-fn read_u64(path: &Path, file: &mut File) -> Result<u64, ()> {
+fn read_u64(path: &Path, file: &mut std::fs::File) -> Result<u64, ()> {
 	use std::io::Read;
 	let mut buffer = Vec::new();
 	file.read_to_end(&mut buffer)
